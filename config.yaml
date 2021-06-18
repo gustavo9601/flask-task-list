@@ -1,0 +1,13 @@
+settings:
+  production: False
+  debug: True
+  app_name: 'Mi Flask APP'
+  secret_key: 'TOKEN MUY SEGURO'
+  template_folder: './app/templates'
+  static_folder: './app/static'
+db_connection:
+  host: '127.0.0.0'
+  user: 'root'
+  password: ''
+  database: 'test'
+
