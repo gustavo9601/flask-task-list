@@ -8,6 +8,7 @@ from main import app
 
 class MainTest(TestCase):
 
+    # Metodo necesario para inicialzar la aplicacion, retornando la aplicacion configurada
     def create_app(self):
         # Habilitando el testing en la configuracion de flask
         app.config['TESTING'] = True
