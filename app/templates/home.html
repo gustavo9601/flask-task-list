@@ -2,11 +2,34 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block title %}
-    {{ super() }}
-    Bienvenido
+{{ super() }}
+Bienvenido
 {% endblock %}
 
 {% block content %}
-   <h1>Binvenido al inicio</h1>
+<h1>Binvenido al inicio</h1>
+<hr>
+<div class="container">
+    <div class="row">
+        <h2>Tasks</h2>
+        {% if tasks %}
+        <div class="col-12">
+            {% for task in tasks %}
+            <p>{{task.title}} | {{task.description}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <h2>Tasks</h2>
+        {% if users %}
+        <div class="col-12">
+            {% for user in users %}
+            <p>{{user.name}} | {{user.password}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

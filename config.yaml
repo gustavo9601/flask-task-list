@@ -6,8 +6,8 @@ settings:
   template_folder: './app/templates'
   static_folder: './app/static'
 db_connection:
-  host: '127.0.0.0'
+  host: 'localhost'
   user: 'root'
   password: ''
-  database: 'test'
+  database: 'task_list_flask'
 

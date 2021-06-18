@@ -1,2 +1,6 @@
 venv
 .idea
+__pycache__
+tests/__pycache__
+app/__pycache__
+app/auth/__pycache__

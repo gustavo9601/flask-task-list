@@ -5,6 +5,9 @@ from app.forms import LoginForm
 # import librerias para pruebas
 import unittest
 
+from app.repositories.tasks_repository import TasksRepository
+from app.repositories.users_repository import UsersRepository
+
 """
 execute in console
 
@@ -21,7 +24,14 @@ app = create_app()
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    tasks = TasksRepository().get_all_tasks()
+    users = UsersRepository().get_all_users()
+    context = {
+        'tasks': tasks,
+        'users': users
+    }
+
+    return render_template('home.html', **context)
 
 
 @app.route('/form-login', methods=['GET', 'POST'])

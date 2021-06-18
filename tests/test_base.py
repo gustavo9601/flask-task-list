@@ -37,3 +37,29 @@ class MainTest(TestCase):
         response = self.client.post(url_for('form_login'), data=mock_user)
         # verifica que luego de la peticion halla sido redigido a la funcion enviada por param
         self.assertRedirects(response, url_for('form_login'))
+
+    def test_auth_blueprint_exists(self):
+        # app.blueprints // comprueba que auth exista dentro de los bluprints de flask
+        self.assertIn('auth', self.app.blueprints)
+
+    def test_auth_login_get_status_code(self):
+        # auth. // por el prefijo del blueprint
+        response = self.client.get(url_for('auth.login'))
+        self.assert200(response)
+
+    def test_auth_login_get_template(self):
+        # auth. // por el prefijo del blueprint
+        self.client.get(url_for('auth.login'))
+        # verificando que el html pasado por parametro sea renderizado en el response
+        self.assertTemplateUsed('login.html')
+
+    def test_auth_login_post(self):
+        mock_user = {
+            'username': 'gus',
+            'password': 'test-password'
+        }
+        # data= // permite enviar datos al request
+        # .post // cambiando el metodo
+        response = self.client.post(url_for('auth.login'), data=mock_user)
+        # verifica que luego de la peticion halla sido redigido a la funcion enviada por param
+        self.assertRedirects(response, url_for('index'))
